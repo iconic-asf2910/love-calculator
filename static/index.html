@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 ULTRA LOVE CALCULATOR 9000™ 💖</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Background Stickers & Decorations -->
+    <div class="decorations-container" aria-hidden="true">
+        <span class="sticker float-1" style="top: 8%; left: 6%;">💖</span>
+        <span class="sticker float-2" style="top: 15%; right: 8%;">🌸</span>
+        <span class="sticker float-3" style="top: 35%; left: 4%;">💌</span>
+        <span class="sticker float-4" style="top: 48%; right: 6%;">🦋</span>
+        <span class="sticker float-1" style="top: 70%; left: 8%;">🎀</span>
+        <span class="sticker float-2" style="top: 82%; right: 10%;">💘</span>
+        <span class="sticker float-3" style="top: 25%; left: 18%;">✨</span>
+        <span class="sticker float-4" style="top: 60%; right: 16%;">🌷</span>
+        <span class="sticker float-2" style="top: 88%; left: 22%;">🫶</span>
+        <span class="sticker float-1" style="top: 6%; right: 28%;">⭐</span>
+        <span class="sticker float-3" style="bottom: 12%; right: 30%;">💞</span>
+        <span class="sticker float-4" style="top: 40%; left: 12%;">🥰</span>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="card-container">
+            <!-- Decorative Card Badges -->
+            <div class="corner-sticker corner-tl" aria-hidden="true">🎀</div>
+            <div class="corner-sticker corner-tr" aria-hidden="true">✨</div>
+            <div class="corner-sticker corner-bl" aria-hidden="true">💌</div>
+            <div class="corner-sticker corner-br" aria-hidden="true">🌸</div>
+
+            <!-- Input form section -->
+            <div id="formSection" class="form-section">
+                <div class="header">
+                    <div class="serious-badge">
+                        <span>💌 A VERY SERIOUS SCIENTIFIC TEST 💌</span>
+                    </div>
+                    <h1 class="title">💕 LOVE CALCULATOR 💕</h1>
+                    <p class="subtitle">
+                        "Because obviously two names can determine the fate of your entire relationship." 😭💘
+                    </p>
+                    <div class="tagline-pill">
+                        <span>🔬 100% scientifically accurate™ (Probably)</span>
+                    </div>
+                </div>
+
+                <form id="loveForm" class="form">
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="name1" class="label">💌 YOUR NAME</label>
+                            <span class="microcopy">No pressure 👀</span>
+                        </div>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🥰</span>
+                            <input
+                                type="text"
+                                id="name1"
+                                name="name1"
+                                class="input"
+                                placeholder="Enter your name..."
+                                maxlength="50"
+                                autocomplete="off"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Heart Divider Between Inputs -->
+                    <div class="heart-divider" aria-hidden="true">
+                        <div class="divider-line"></div>
+                        <div class="heart-pulse-box">
+                            <span class="divider-heart">💕</span>
+                            <span class="divider-plus">+</span>
+                            <span class="divider-heart">💕</span>
+                        </div>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="name2" class="label">💌 THEIR NAME</label>
+                            <span class="microcopy">Choose wisely 💘</span>
+                        </div>
+                        <div class="input-wrapper">
+                            <span class="input-icon">😳</span>
+                            <input
+                                type="text"
+                                id="name2"
+                                name="name2"
+                                class="input"
+                                placeholder="Enter their name..."
+                                maxlength="50"
+                                autocomplete="off"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="disclaimer-text">
+                        ⚠️ Warning: Don't blame us for whatever the love gods decide! 😭
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn btn-primary pulse-btn">
+                        <span class="btn-sparkle">✨</span>
+                        <span class="btn-text">💖 CALCULATE OUR DESTINY 💖</span>
+                        <span class="btn-sparkle">✨</span>
+                    </button>
+
+                    <div id="errorMessage" class="error-message" style="display: none;"></div>
+                </form>
+
+                <!-- Privacy notice -->
+                <footer class="privacy-note">
+                    <small>💌</small>
+                </footer>
+            </div>
+
+            <!-- Result section (hidden initially) -->
+            <div id="resultSection" class="result-section" style="display: none;">
+                <div class="result-card">
+                    <div class="verdict-banner">
+                        <span>💌 THE VERDICT IS IN 💌</span>
+                    </div>
+
+                    <div class="result-heart-aura">
+                        <div class="love-meter-circle">
+                            <div class="big-heart-anim">💖</div>
+                            <div class="percentage-display">
+                                <span id="percentageNumber" class="percentage-number">0</span>
+                                <span class="percentage-sign">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result message banner -->
+                    <div class="result-message-container">
+                        <div id="resultMessage" class="result-message"></div>
+                    </div>
+
+                    <!-- Floating result decor -->
+                    <div class="result-sparkles" aria-hidden="true">
+                        <span>✨</span>
+                        <span>💖</span>
+                        <span>⭐</span>
+                        <span>💕</span>
+                        <span>✨</span>
+                    </div>
+
+                    <div class="action-row">
+                        <button type="button" id="resetBtn" class="btn btn-secondary bounce-hover">
+                            🔄 TEST ANOTHER COUPLE 💕
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading overlay with cheesy rotating quotes -->
+            <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+                <div class="loading-content">
+                    <div class="loading-heart-bounce">💘</div>
+                    <div class="spinner-ring"></div>
+                    <p id="loadingQuote" class="loading-quote">💘 Consulting the love gods...</p>
+                    <div class="loading-sub">Aligning the romantic chakras ✨</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
+
+
+
+
