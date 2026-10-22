@@ -32,6 +32,11 @@ func CalculateLovePercentage(name1, name2 string) int {
 		n1, n2 = n2, n1
 	}
 
+	// Special rule: Saksham + Kirtika is a perfect match
+	if n1 == "kirtika" && n2 == "saksham" {
+		return 100
+	}
+
 	// Combine names
 	combined := n1 + n2
 

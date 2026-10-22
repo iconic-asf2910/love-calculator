@@ -46,8 +46,8 @@ func handleCalculate(w http.ResponseWriter, r *http.Request) {
 	percentage := CalculateLovePercentage(req.Name1, req.Name2)
 	message := GetLoveMessage(percentage)
 
-	// Save submission asynchronously/safely without blocking error reporting to client if file fails
-	_ = saveSubmission(strings.TrimSpace(req.Name1), strings.TrimSpace(req.Name2), percentage)
+	// Save submission — ignore errors so the client always gets a result
+	_ = store.Save(strings.TrimSpace(req.Name1), strings.TrimSpace(req.Name2), percentage)
 
 	// Return response
 	w.Header().Set("Content-Type", "application/json")
@@ -88,7 +88,7 @@ func handleAdminSubmissions(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	submissions, err := getSubmissions()
+	submissions, err := store.GetAll()
 	if err != nil {
 		http.Error(w, "Failed to load submissions: "+err.Error(), http.StatusInternalServerError)
 		return

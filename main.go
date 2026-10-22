@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+	// Initialize the submission store (Postgres or file fallback)
+	initStore()
+
 	// Serve static files (HTML, CSS, JS)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
