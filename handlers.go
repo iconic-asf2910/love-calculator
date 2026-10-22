@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"html"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -46,8 +47,10 @@ func handleCalculate(w http.ResponseWriter, r *http.Request) {
 	percentage := CalculateLovePercentage(req.Name1, req.Name2)
 	message := GetLoveMessage(percentage)
 
-	// Save submission — ignore errors so the client always gets a result
-	_ = store.Save(strings.TrimSpace(req.Name1), strings.TrimSpace(req.Name2), percentage)
+	// Save submission — log error if it fails, but ensure client always gets a result
+	if err := store.Save(strings.TrimSpace(req.Name1), strings.TrimSpace(req.Name2), percentage); err != nil {
+		log.Printf("Warning: failed to save submission: %v", err)
+	}
 
 	// Return response
 	w.Header().Set("Content-Type", "application/json")

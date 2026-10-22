@@ -70,6 +70,7 @@ func (s *supabaseStore) Save(name1, name2 string, percentage int) error {
 
 	// Add required Supabase headers
 	req.Header.Set("apikey", s.apiKey)
+	req.Header.Set("Authorization", "Bearer "+s.apiKey)
 	req.Header.Set("Content-Type", "application/json")
 	// Prefer returning representation to ensure the insert worked
 	req.Header.Set("Prefer", "return=minimal")
@@ -97,6 +98,7 @@ func (s *supabaseStore) GetAll() ([]Submission, error) {
 	}
 
 	req.Header.Set("apikey", s.apiKey)
+	req.Header.Set("Authorization", "Bearer "+s.apiKey)
 
 	client := &http.Client{Timeout: 10 * time.Second}
 	resp, err := client.Do(req)
@@ -199,7 +201,7 @@ func initStore() {
 	supabaseKey := os.Getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 	if supabaseURL != "" && supabaseKey != "" {
-		log.Println("✓  Connected to Supabase via REST API")
+		log.Println("ℹ Supabase store configured via REST API")
 		store = newSupabaseStore(supabaseURL, supabaseKey)
 		return
 	}

@@ -3,10 +3,18 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
-	// Initialize the submission store (Postgres or file fallback)
+	// Load local environment variables from .env
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found; using system environment variables")
+	}
+
+	// Initialize the submission store (Supabase or file fallback)
 	initStore()
 
 	// Serve static files (HTML, CSS, JS)
@@ -26,9 +34,15 @@ func main() {
 		}
 		http.ServeFile(w, r, "static/index.html")
 	})
-
 	// Start server
-	port := ":8080"
-	log.Printf("Server starting on http://localhost%s\n", port)
-	log.Fatal(http.ListenAndServe(port, nil))
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "8080"
+	}
+
+	addr := ":" + port
+
+	log.Printf("Server starting on :%s\n", port)
+	log.Fatal(http.ListenAndServe(addr, nil))
 }
